@@ -1,0 +1,20 @@
+<div class="app" [ngClass]="{dark: isDark}">
+    <mat-toolbar color="primary">
+        <a [routerLink]="['']">Connections</a>
+        <span class="spacer"></span>
+        <mat-slide-toggle color="primary" (change)="changeTheme()">
+            <span class="nav-margin-right" [ngClass]="{
+                'dark-font': isDark,
+                'light-font': !isDark
+                }">{{ isDark ? 'Light' : 'Dark' }}</span>
+        </mat-slide-toggle>
+        <ng-container *ngIf="logged">
+            <a [routerLink]="['/profile']" class="profile nav-margin-right">
+                <mat-icon>account_circle</mat-icon>
+            </a>
+            <button mat-button (click)="logOut()" [disabled]="isLoading">Log Out</button>
+        </ng-container>
+    </mat-toolbar>
+    <br>
+    <router-outlet></router-outlet>
+</div>

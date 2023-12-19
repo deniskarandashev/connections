@@ -1,0 +1,26 @@
+.spacer {
+    flex: 1 1 auto;
+  }
+
+  .profile {
+    margin-top: 11px;
+  }
+
+a {
+  color: unset;
+  text-decoration: none;
+}
+
+row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app {
+  height: 100%;
+}
+
+.nav-margin-right {
+  margin-right: 20px;
+}

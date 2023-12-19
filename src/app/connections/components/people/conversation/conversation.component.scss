@@ -1,0 +1,94 @@
+@import '../../../../../assets/scroll.style.scss';
+
+.card {
+    max-width: 800px;
+    margin: auto;
+    min-height: 200px;
+    height: calc(100vh - 300px);
+}
+
+.form {
+    height: 100%;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.submit {
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+.right {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.card-footer {
+    margin-bottom: 0;
+    margin-top: auto;
+}
+
+.message {
+    margin: 5px auto 5px 0;
+    background-color: beige;
+    width: 70%;
+}
+
+.message>* {
+    margin: 2px 5px 2px 5px;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.author-name {
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.message-footer {
+    font-size: smaller;
+}
+
+.messages-container {
+    background-color: gainsboro;
+    height: 100%;
+    overflow: hidden;
+    scroll-behavior: smooth;
+    overflow-y: visible;
+}
+
+.input-form {
+    width: 100%;
+    margin: auto 0 0 0;
+}
+
+.input-full-width {
+    width: 100%;
+}
+
+.my-message {
+    margin-left: auto;
+    margin-right: 0;
+    background-color: rgb(196, 246, 199);
+}
+
+.no-messages {
+    font-size: x-large;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-no-messages {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

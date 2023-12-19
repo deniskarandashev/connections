@@ -1,0 +1,46 @@
+<mat-card class="card">
+    <section class="form" *ngIf="messages">
+        <mat-card-header>
+            <mat-card-title>{{ companion.name.S }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-actions>
+            <button mat-button (click)="goBack()">BACK</button>
+            <div class="right">
+                <span *ngIf="updatePressed">{{ count }}</span>
+                <button type="button" mat-button (click)="update()" [disabled]="updatePressed">Update</button>
+                <button *ngIf="true" type="button" mat-raised-button color="warn" (click)="deleteConversation()" [disabled]="isLoading">DELETE</button>
+            </div>
+        </mat-card-actions>
+        <mat-progress-bar [mode]="isLoading ? 'indeterminate' : 'determinate'"></mat-progress-bar>
+        <!-- <mat-divider></mat-divider> -->
+        <mat-card-content #messagesContainer class="messages-container" [ngClass]="{'container-no-messages': (!messagesObj || !messagesObj.Items[0]?.message?.S)}">
+            <div class="no-messages" *ngIf="(!messages || !messages[0]?.message?.S)">
+                <span class="lets-write-font-dark">Let's write a first message!</span>
+            </div>
+            <ng-container *ngFor="let m of messages">
+                <mat-card class="message dark-message" [ngClass]="{'my-message': isMyMessage(m)}">
+                    <div class="row">
+                        <mat-icon>face</mat-icon>
+                        <span class="author-name">{{ getUserName(m) }}</span>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <span>{{ m.message.S }}</span>
+                    <mat-divider></mat-divider>
+                    <span class="message-footer">Created at: {{ m.createdAt.S | date: 'medium' }}</span>
+                </mat-card>
+            </ng-container>
+
+            <br>
+        </mat-card-content>
+        <mat-card-footer>
+            <form class="input-form" [formGroup]="form">
+                <mat-form-field class="input-full-width">
+                    <mat-label>Message</mat-label>
+                    <input matInput #message formControlName="message">
+                    <mat-hint align="end">Length: {{message.value.length}}</mat-hint>
+                </mat-form-field>
+            </form>
+            <!-- <mat-progress-bar [mode]="isLoading ? 'indeterminate' : 'determinate'"></mat-progress-bar> -->
+        </mat-card-footer>
+    </section>
+</mat-card>

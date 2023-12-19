@@ -1,0 +1,56 @@
+@import '../../../../assets/scroll.style.scss';
+
+.card {
+    width: 100%;
+    height: 100%;
+}
+
+.form {
+    overflow: hidden;
+    scroll-behavior: smooth;
+    overflow-y: visible;
+}
+
+.right {
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+.card-content {
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+}
+
+.spinner {
+    position: absolute;
+    z-index: 10000;
+    top: 50%;
+    left: 45%;
+}
+
+.form-loading {
+    opacity: 0.5;
+    color: bisque;
+    background-color: gainsboro;
+}
+
+.group-card {
+    width: 28%;
+    margin: 10px;
+    display: flex; 
+    flex-direction: row; 
+    align-items: center; 
+    height: 35px;
+    cursor: pointer;
+}
+
+.overflow {
+    padding-left: 10px;
+    padding-right: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

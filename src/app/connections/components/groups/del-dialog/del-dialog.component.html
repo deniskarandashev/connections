@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>Delete group "{{ data.name }}"</h1>
+<div mat-dialog-content>
+    <p>Do you want to <b>remove</b> your group?</p>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onClose()">Close</button>
+    <button mat-raised-button color="warn" style="margin-left: auto; margin-right: 0;"
+        (click)="onDelete()">DELETE</button>
+</div>

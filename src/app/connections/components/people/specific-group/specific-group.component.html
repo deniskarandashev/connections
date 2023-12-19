@@ -1,0 +1,19 @@
+<mat-card class="card">
+    <section class="form" *ngIf="specificGroup">
+        <mat-card-header>
+            <mat-card-title>Group info</mat-card-title>
+        </mat-card-header>
+        <br>
+        <mat-card-content>
+            <p>Created by (UID): {{ specificGroup.createdBy?.S }}</p>
+            <p>Created at: {{ specificGroup.createdAt?.S | date }}</p>
+            <p>Group name: {{ specificGroup.name.S }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-button (click)="goBack()">BACK</button>
+        </mat-card-actions>
+    </section>
+    <mat-card-footer>
+        <mat-progress-bar [mode]="'determinate'"></mat-progress-bar>
+    </mat-card-footer>
+</mat-card>

@@ -1,0 +1,49 @@
+<mat-card class="card">
+    <form class="form" [formGroup]="form" (ngSubmit)="login()">
+        <mat-card-header>
+            <mat-card-title>Log In</mat-card-title>
+        </mat-card-header>
+        <br>
+        <mat-card-content>
+
+            <!-- email  -->
+            <mat-form-field class="full-width">
+                <mat-label>Email</mat-label>
+                <input type="text" matInput [formControl]="getFormControl('email')" [errorStateMatcher]="matcher"
+                    placeholder="Ex. pat@example.com">
+                <mat-error *ngIf="getFormControl('email').hasError('email') && !getFormControl('email').hasError('required')">
+                    Please enter a valid email address
+                </mat-error>
+                <mat-error *ngIf="getFormControl('email').hasError('required')">
+                    Email is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <!-- password  -->
+            <mat-form-field class="full-width">
+                <mat-label>Password</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" [formControl]="getFormControl('password')" [errorStateMatcher]="matcher">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+                <mat-error *ngIf="getFormControl('password').hasError('passwordValidator') && !getFormControl('password').hasError('required')">
+                    Please enter a <strong>valid</strong> password
+                </mat-error>
+                <mat-error *ngIf="getFormControl('password').hasError('required')">
+                    Password is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-error *ngIf="error?.type">
+                {{ error.message }}
+            </mat-error>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-button (click)="goToRoute('signup')">SIGN UP</button>
+            <button type="submit" class="submit" mat-raised-button color="primary" [disabled]="form.invalid">Log In</button>
+        </mat-card-actions>
+    </form>
+    <mat-card-footer>
+        <mat-progress-bar #progressBar [mode]="isLoading ? 'indeterminate' : 'determinate'"></mat-progress-bar>
+    </mat-card-footer>
+</mat-card>

@@ -1,0 +1,35 @@
+<form [formGroup]="form">
+    <h1 mat-dialog-title>Create group</h1>
+    <div mat-dialog-content>
+        <mat-form-field>
+            <mat-label>Group name</mat-label>
+            <input type="text" matInput maxlength="30" [formControl]="groupName" [errorStateMatcher]="matcher">
+            <mat-error *ngIf="groupName.hasError('required')">
+                Name is <strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="groupName.hasError('minlength') && !groupName.hasError('required')">
+                Name is <strong>too short</strong>
+            </mat-error>
+            <mat-error *ngIf="groupName.hasError('maxlength') && !groupName.hasError('required')">
+                Name is <strong>too long</strong>
+            </mat-error>
+            <mat-error *ngIf="groupName.hasError('groupNameValidator') && !groupName.hasError('required')">
+                Name should contain only letters, digits or spaces
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-button (click)="onClose()">Close</button>
+        <button mat-raised-button cdkFocusInitial (click)="onCreate()" color="primary" style="margin-left: auto; margin-right: 0;">CREATE</button>
+    </div>
+</form>
+
+<!-- first name -->
+<!-- <mat-form-field class="full-width">
+    <mat-label>Name</mat-label>
+    <input type="name" matInput [formControl]="getFormControl('name')" [errorStateMatcher]="matcher"
+        placeholder="Enter your name">
+    <mat-error *ngIf="getFormControl('name').hasError('required')">
+        Name is <strong>required</strong>
+    </mat-error>
+</mat-form-field> -->

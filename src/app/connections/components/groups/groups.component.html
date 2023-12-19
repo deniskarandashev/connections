@@ -1,0 +1,30 @@
+<mat-card class="card">
+    <mat-spinner *ngIf="isLoading" class="spinner"></mat-spinner>
+    <form class="form">
+        <mat-card-header>
+            <mat-card-title>Group list</mat-card-title>
+            <div class="right">
+                <span *ngIf="updatePressed">{{ count }}</span>
+                <button type="button" mat-button (click)="update()" [disabled]="updatePressed">Update</button>
+                <button type="button" mat-raised-button color="primary" (click)="openDialog()">CREATE</button>
+            </div>
+        </mat-card-header>
+        <br>
+        <mat-card-content class="card-content">
+            <ng-container *ngIf="groupsList && groupsList?.Items?.length">
+                <ng-container *ngFor="let item of groupsList.Items">
+                    <mat-card class="group-card" (click)="onGroupCard(item)">
+                        <span class="overflow">{{ item.name.S }}</span>
+                        <ng-container *ngIf="isMine(item)">
+                            <button type="button" mat-raised-button color="warn"
+                                style="margin-left: auto; margin-right: 0; width: fit-content;" (click)="deleteGroup($event, item)">
+                                DELETE
+                            </button>
+                        </ng-container>
+                        
+                    </mat-card>
+                </ng-container>
+            </ng-container>
+        </mat-card-content>
+    </form>
+</mat-card>
